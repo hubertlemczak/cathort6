@@ -1,18 +1,19 @@
+@import '../../utils/variables.syles.scss';
+
 .navigation {
-  height: 70px;
-  width: 70%;
-  margin: 0 auto;
+  height: 100px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
 
   .logo-container {
     height: 100%;
-    width: 50px;
-    padding: 20px 0 0 25px;
+    width: 90px;
+    padding-top: 20px;
 
     .logo {
-      transform: scale(1.2);
+      fill: $primary-clr;
     }
   }
 
@@ -21,11 +22,11 @@
     height: 100%;
     display: flex;
     align-items: center;
+    gap: 15px;
     justify-content: flex-end;
 
     .nav-link {
       font-size: 1.2rem;
-      padding: 10px 15px;
       cursor: pointer;
     }
   }
