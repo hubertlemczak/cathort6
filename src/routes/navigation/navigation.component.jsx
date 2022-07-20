@@ -2,6 +2,9 @@ import { Fragment } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 
 import { ReactComponent as Cathort6 } from '../../assets/cathort6.svg';
+import { CartIcon } from '../../components/cartIcon/CartIcon';
+import { ShoppingCart } from '../../components/shoppingCart/ShoppingCart';
+import { useShoppingCart } from '../../context/ShoppingCartContext';
 import { useUserContext } from '../../context/UserContext';
 import { signOutUser } from '../../utils/firebase/firebase.utils';
 
@@ -9,6 +12,7 @@ import './navigation.styles.scss';
 
 const Navigation = () => {
   const { currentUser } = useUserContext();
+  const { cartIsOpen } = useShoppingCart();
 
   return (
     <Fragment>
@@ -29,7 +33,9 @@ const Navigation = () => {
               SIGN IN
             </Link>
           )}
+          <CartIcon />
         </div>
+        {cartIsOpen && <ShoppingCart />}
       </div>
       <Outlet />
     </Fragment>
