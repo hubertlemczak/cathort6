@@ -28,16 +28,19 @@ export const SignInForm = () => {
     e.preventDefault();
 
     try {
-      const response = await signInUserWithEmailAndPassword(email, password);
-      console.log(response);
+      await signInUserWithEmailAndPassword(email, password);
       resetFormFields();
     } catch (err) {
       switch (err.code) {
-        case 'auth/wrong-password' || 'auth/user-not-found':
+        case 'auth/user-not-found':
+          alert('incorrect email or password');
+          break;
+        case 'auth/wrong-password':
           alert('incorrect email or password');
           break;
         default:
           console.log('error', err);
+          console.log('error', err.code);
       }
     }
   };
@@ -46,7 +49,6 @@ export const SignInForm = () => {
 
   const signInWithGoogle = async () => {
     const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
   };
 
   return (
