@@ -1,9 +1,11 @@
+import { useShoppingCart } from '../../context/ShoppingCartContext';
 import Button from '../button/button.component';
 
 import './ProductCard.scss';
 
 export const ProductCard = ({ product }) => {
-  const { name, price, imageUrl } = product;
+  const { id, name, price, imageUrl } = product;
+  const { increaseItemQuantity } = useShoppingCart();
   return (
     <div className="product-card-container">
       <img src={imageUrl} alt={`${name}`} />
@@ -11,7 +13,9 @@ export const ProductCard = ({ product }) => {
         <span className="name">{name}</span>
         <span className="price">{price}</span>
       </div>
-      <Button buttonType="inverted">Add to card</Button>
+      <Button buttonType="inverted" onClick={() => increaseItemQuantity(id)}>
+        Add to card
+      </Button>
     </div>
   );
 };

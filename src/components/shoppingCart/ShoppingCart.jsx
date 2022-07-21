@@ -5,11 +5,15 @@ import Button from '../button/button.component.jsx';
 
 import './ShoppingCart.scss';
 import { useShoppingCart } from '../../context/ShoppingCartContext';
+import { CartItem } from '../cartItem/CartItem';
 
 export const ShoppingCart = () => {
-  const { closeCart } = useShoppingCart();
+  const { closeCart, cartItems } = useShoppingCart();
+  console.log(cartItems);
+
   return (
     <div className="shopping-cart">
+      <div className="shopping-cart-bg" onClick={closeCart}></div>
       <div className="shopping-cart-container">
         <div className="shopping-cart-tabs">
           <button className="shopping-cart-tab shopping-cart-tab1 active">
@@ -28,7 +32,11 @@ export const ShoppingCart = () => {
           </button>
         </div>
         <div className="shopping-cart-contents">
-          <ul className="shopping-cart-items">{/* {map through items} */}</ul>
+          <ul className="shopping-cart-items">
+            {cartItems.map((item) => (
+              <CartItem key={item.id} item={item} />
+            ))}
+          </ul>
           <div className="checkout-btn">
             <Button buttonType={'inverted'}>CHECKOUT</Button>
           </div>

@@ -12,7 +12,7 @@ import './navigation.styles.scss';
 
 const Navigation = () => {
   const { currentUser } = useUserContext();
-  const { cartIsOpen } = useShoppingCart();
+  const { isCartOpen } = useShoppingCart();
 
   return (
     <Fragment>
@@ -35,7 +35,7 @@ const Navigation = () => {
           )}
           <CartIcon />
         </div>
-        {cartIsOpen && <ShoppingCart />}
+        {isCartOpen && <ShoppingCart />}
       </div>
       <Outlet />
     </Fragment>
