@@ -9,7 +9,6 @@ import { CartItem } from '../cartItem/CartItem';
 
 export const ShoppingCart = () => {
   const { closeCart, cartItems } = useShoppingCart();
-  console.log(cartItems);
 
   return (
     <div className="shopping-cart">

@@ -4,6 +4,7 @@ import Home from './routes/home/home.component';
 import Navigation from './routes/navigation/navigation.component';
 import Authentication from './routes/authentication/authentication.component';
 import Shop from './routes/shop/Shop';
+import Hats from './routes/shop/hats/Hats';
 
 const App = () => (
   <div className="App-container">
@@ -11,6 +12,7 @@ const App = () => (
       <Route path="/" element={<Navigation />}>
         <Route index element={<Home />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/shop/hats" element={<Hats />} />
         <Route path="/auth" element={<Authentication />} />
       </Route>
     </Routes>

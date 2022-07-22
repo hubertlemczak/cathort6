@@ -1,17 +1,7 @@
-import { ProductCard } from '../../components/productCard/ProductCard';
-import { useShop } from '../../context/ShopContext';
-
-import './Shop.scss';
+import Categories from '../../components/categories/categories.component';
 
 const Shop = () => {
-  const { shopItems } = useShop();
-  return (
-    <div className="products-container">
-      {shopItems.map((product) => (
-        <ProductCard key={product.id} product={product} />
-      ))}
-    </div>
-  );
+  return <Categories />;
 };
 
 export default Shop;
