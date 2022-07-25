@@ -43,7 +43,7 @@ export const ShoppingCart = () => {
             ))}
           </ul>
           <div className="checkout-btn">
-            <Button buttonType={'inverted'}>CHECKOUT</Button>
+            <Button buttonType={'black'}>CHECKOUT</Button>
           </div>
         </div>
       </div>

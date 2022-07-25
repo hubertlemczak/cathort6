@@ -42,4 +42,16 @@
       border: none;
     }
   }
+
+  &.black {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+
+    &:hover {
+      background-color: white;
+      color: black;
+      border: 1px solid black;
+    }
+  }
 }

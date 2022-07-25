@@ -15,3 +15,29 @@
     opacity: 0;
   }
 }
+
+@keyframes fade-in-out {
+  from {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-right-fade {
+  from {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
