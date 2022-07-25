@@ -7,16 +7,17 @@ import Shop from './routes/shop/Shop';
 import ProductsPage from './routes/shop/ProductsPage/ProductsPage';
 
 const App = () => (
-  <div className="App-container">
-    <Routes>
-      <Route path="/" element={<Navigation />}>
-        <Route index element={<Home />} />
+  <>
+    <Navigation />
+    <div className="App-container">
+      <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/shop/:category" element={<ProductsPage />} />
         <Route path="/auth" element={<Authentication />} />
-      </Route>
-    </Routes>
-  </div>
+      </Routes>
+    </div>
+  </>
 );
 
 export default App;

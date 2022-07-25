@@ -6,20 +6,22 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
+  padding: 15px 10px;
+  top: 0;
+  z-index: 3;
+  background-color: rgba(255, 255, 255, 0.783);
 
   .logo-container {
-    height: 100%;
     width: 90px;
-    padding-top: 20px;
 
     .logo {
+      width: 80px;
       fill: $primary-clr;
     }
   }
 
   .nav-links-container {
     width: 50%;
-    height: 100%;
     display: flex;
     align-items: center;
     gap: 15px;

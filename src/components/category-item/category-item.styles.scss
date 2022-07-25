@@ -2,14 +2,29 @@
 
 .category-container {
   min-width: 30%;
-  height: 240px;
-  flex: 1 1 auto;
-  display: flex;
+  height: 540px;
+  // flex: 1 1 auto;
+  // display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   transition: transform 300ms ease;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.076);
+
+  &:nth-child(2n + 2) {
+    // height: 650px;
+    max-width: 550px;
+    // background-color: blue;
+  }
+
+  // &:nth-child(2n + 3) {
+  //   height: 650px;
+  //   max-width: 550px;
+  //   // background-color: blue;
+  //   img {
+  //     height: 627px;
+  //   }
+  // }
 
   .background-image {
     transition: transform 0.7s cubic-bezier(0.25, 0.45, 0.45, 0.95);

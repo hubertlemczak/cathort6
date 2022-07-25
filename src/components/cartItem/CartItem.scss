@@ -5,7 +5,7 @@
   margin-bottom: 15px;
 
   &.slide-right-fade {
-    animation: slide-right-fade 700ms ease forwards;
+    animation: slide-right-fade 700ms cubic-bezier(0.9, 0.31, 0, 1) forwards;
   }
 
   .item-img {
@@ -69,5 +69,5 @@
   right: 38%;
   opacity: 0;
   transform: translateY(40px);
-  animation: fade-in-out 2000ms ease 200ms forwards;
+  animation: fade-in-out 1500ms ease 200ms forwards;
 }

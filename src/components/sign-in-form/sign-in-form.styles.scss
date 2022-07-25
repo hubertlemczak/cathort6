@@ -3,8 +3,15 @@
   flex-direction: column;
   width: 380px;
 
+  @media screen and (max-width: 430px) {
+    & {
+      width: 340px;
+    }
+  }
+
   h2 {
     margin: 10px 0;
+    font-weight: 400;
   }
 
   .buttons-container {
