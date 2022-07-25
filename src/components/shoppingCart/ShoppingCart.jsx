@@ -8,10 +8,14 @@ import { useShoppingCart } from '../../context/ShoppingCartContext';
 import { CartItem } from '../cartItem/CartItem';
 
 export const ShoppingCart = () => {
-  const { closeCart, cartItems } = useShoppingCart();
+  const { isCartOpen, closeCart, cartItems } = useShoppingCart();
 
   return (
-    <div className="shopping-cart">
+    <div
+      className={`shopping-cart ${
+        isCartOpen ? 'shopping-cart-open' : 'shopping-cart-hidden'
+      }`}
+    >
       <div className="shopping-cart-bg" onClick={closeCart}></div>
       <div className="shopping-cart-container">
         <div className="shopping-cart-tabs">
