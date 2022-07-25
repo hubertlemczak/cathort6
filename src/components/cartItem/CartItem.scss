@@ -1,0 +1,48 @@
+.shopping-cart-item {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+
+  .item-img {
+    width: 100px;
+    height: 120px;
+    object-fit: cover;
+  }
+
+  .item-right {
+    flex: 1;
+    max-width: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .item-price {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .item-details-more {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .item-buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .item-love {
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+    }
+
+    .item-delete {
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

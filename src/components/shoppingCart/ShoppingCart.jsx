@@ -8,16 +8,22 @@ import { useShoppingCart } from '../../context/ShoppingCartContext';
 import { CartItem } from '../cartItem/CartItem';
 
 export const ShoppingCart = () => {
-  const { closeCart, cartItems } = useShoppingCart();
+  const { fadeOut, setFadeOut, closeCart, cartItems, getCartSize } =
+    useShoppingCart();
 
   return (
-    <div className="shopping-cart fade">
-      <div className="shopping-cart-bg" onClick={closeCart}></div>
+    <div
+      className={`shopping-cart ${fadeOut ? 'fade-out' : ''}`}
+      onAnimationEnd={(e) => {
+        if (e.animationName === 'fade-out') closeCart();
+      }}
+    >
+      <div className="shopping-cart-bg" onClick={() => setFadeOut(true)}></div>
       <div className="shopping-cart-container">
         <div className="shopping-cart-tabs">
           <button className="shopping-cart-tab shopping-cart-tab1 active">
             <CartSVG style={{ width: 24, height: 24 }} />
-            <span>SHOPPING CART [0]</span>
+            <span>SHOPPING CART [{getCartSize()}]</span>
           </button>
           <button className="shopping-cart-tab shopping-wishlist-tab">
             <HeartSVG style={{ width: 24, height: 24 }} />
@@ -25,7 +31,7 @@ export const ShoppingCart = () => {
           </button>
           <button
             className="shopping-cart-tab shopping-cart-close"
-            onClick={closeCart}
+            onClick={() => setFadeOut(true)}
           >
             <ExitSVG style={{ width: 15, height: 15 }} />
           </button>

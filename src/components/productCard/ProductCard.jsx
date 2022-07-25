@@ -8,15 +8,10 @@ export const ProductCard = ({ product }) => {
   const { increaseItemQuantity } = useShoppingCart();
   return (
     <div className="product-card-container">
-      <img
-        src={
-          /*imageUrl*/ 'https://images.unsplash.com/photo-1566927467984-6332be7377d0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
-        }
-        alt={`${name}`}
-      />
+      <img src={imageUrl} alt={`${name}`} />
       <div className="footer">
-        <span className="name">{/*name*/}name</span>
-        <span className="price">{/*price*/}price</span>
+        <span className="name">{name}</span>
+        <span className="price">{price}</span>
       </div>
       <Button buttonType="inverted" onClick={() => increaseItemQuantity(id)}>
         Add to card

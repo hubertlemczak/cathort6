@@ -4,9 +4,10 @@
   position: fixed;
   inset: 0;
   z-index: 2;
+  animation: fade-in 200ms forwards ease;
 
-  &.fade {
-    animation: fade 500ms forwards ease;
+  &.fade-out {
+    animation: fade-out 200ms forwards ease;
   }
 
   &-bg {
@@ -59,24 +60,14 @@
     padding: 30px;
   }
 
+  &-items {
+    overflow-y: scroll;
+    height: 74vh;
+  }
+
   .checkout-btn {
     position: absolute;
     bottom: 30px;
     transform: translateX(50%);
   }
-}
-
-.my-transition-enter {
-  opacity: 0;
-}
-.my-transition-enter-active {
-  opacity: 1;
-  transition: opacity 200ms;
-}
-.my-transition-exit {
-  opacity: 1;
-}
-.my-transition-exit-active {
-  opacity: 0;
-  transition: opacity 200ms;
 }
