@@ -1,17 +1,12 @@
+@import '../../utils/animations.scss';
+
 .shopping-cart {
   position: fixed;
   inset: 0;
   z-index: 2;
 
-  &-open {
-    transition: all 300ms ease;
-    opacity: 1;
-  }
-
-  &-hidden {
-    transition: all 300ms ease;
-    opacity: 0;
-    visibility: hidden;
+  &.fade {
+    animation: fade 500ms forwards ease;
   }
 
   &-bg {
