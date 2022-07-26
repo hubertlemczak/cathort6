@@ -13,7 +13,7 @@ export const ProductCard = ({ product }) => {
         <span className="name">{name}</span>
         <span className="price">{price}</span>
       </div>
-      <Button buttonType="inverted" onClick={() => increaseItemQuantity(id)}>
+      <Button buttonType="black" onClick={() => increaseItemQuantity(id)}>
         Add to card
       </Button>
     </div>

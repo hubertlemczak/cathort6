@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import { useShop } from './ShopContext';
 
 const ShoppingCart = createContext();
@@ -42,9 +42,6 @@ export const ShoppingCartProvider = ({ children }) => {
   const getCartSize = () =>
     cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
-  useEffect(() => {
-    console.log(cartItems);
-  }, [cartItems]);
   return (
     <ShoppingCart.Provider
       value={{

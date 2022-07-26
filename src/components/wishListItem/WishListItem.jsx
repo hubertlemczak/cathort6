@@ -1,25 +1,26 @@
+import { ReactComponent as CartSVG } from '../../assets/shopping-bag.svg';
 import { ReactComponent as TrashSVG } from '../../assets/trash.svg';
-import { ReactComponent as HeartSVG } from '../../assets/heart.svg';
 import { useShop } from '../../context/ShopContext';
 import { useShoppingCart } from '../../context/ShoppingCartContext';
 
-import './CartItem.scss';
+import './WishListItem.scss';
 import { useState } from 'react';
 import { useWishList } from '../../context/WishListContext';
 
-export const CartItem = ({ item: { id, quantity } }) => {
-  const [remove, setRemove] = useState(false);
+export const WishListItem = ({ item: { id, quantity } }) => {
+  const [remove, setRemove] = useState(null);
   const { shopItems } = useShop();
-  const { removeItemFromCart } = useShoppingCart();
-  const { addToWishList } = useWishList();
+  const { increaseItemQuantity } = useShoppingCart();
+  const { removeFromWishList } = useWishList();
   const { name, imageUrl, price } = shopItems.find((i) => i.id === id);
+
   return (
     <>
       {remove === 'remove' && (
         <span
           className="fade-in-remove"
           onAnimationEnd={() => {
-            removeItemFromCart(id);
+            removeFromWishList(id);
             setRemove(null);
           }}
         >
@@ -30,11 +31,11 @@ export const CartItem = ({ item: { id, quantity } }) => {
         <span
           className="fade-in-add"
           onAnimationEnd={() => {
-            removeItemFromCart(id);
+            removeFromWishList(id);
             setRemove(null);
           }}
         >
-          ITEM ADDED TO WISHLIST
+          ITEM ADDED TO CART
         </span>
       )}
       <li className={`shopping-cart-item ${remove ? 'slide-right-fade' : ''}`}>
@@ -45,18 +46,13 @@ export const CartItem = ({ item: { id, quantity } }) => {
           <div className="item-details">
             <p className="item-price">£{price.toFixed(2)}</p>
             <p className="item-name">{name}</p>
-            <div className="item-details-more">
-              <p className="item-type">BLUE</p>
-              <p className="item-size">XL</p>
-              <p className="item-quantity">Qty: {quantity}</p>
-            </div>
           </div>
           <div className="item-buttons">
-            <HeartSVG
-              className="item-love"
+            <CartSVG
+              className="item-cart"
               onClick={() => {
+                increaseItemQuantity(id);
                 setRemove('add');
-                addToWishList(id);
               }}
             />
             <TrashSVG
