@@ -13,28 +13,22 @@ export const CartItem = ({ item: { id, quantity } }) => {
   const { removeItemFromCart } = useShoppingCart();
   const { addToWishList } = useWishList();
   const { name, imageUrl, price } = shopItems.find((i) => i.id === id);
+
+  const removeState = {
+    remove: { class: 'fade-in-remove', msg: 'ITEM REMOVED' },
+    add: { class: 'fade-in-add', msg: 'ITEM ADDED TO WISHLIST' },
+  };
   return (
     <>
-      {remove === 'remove' && (
+      {remove && (
         <span
-          className="fade-in-remove"
+          className={removeState[remove].class}
           onAnimationEnd={() => {
             removeItemFromCart(id);
             setRemove(null);
           }}
         >
-          ITEM REMOVED
-        </span>
-      )}
-      {remove === 'add' && (
-        <span
-          className="fade-in-add"
-          onAnimationEnd={() => {
-            removeItemFromCart(id);
-            setRemove(null);
-          }}
-        >
-          ITEM ADDED TO WISHLIST
+          {removeState[remove].msg}
         </span>
       )}
       <li className={`shopping-cart-item ${remove ? 'slide-right-fade' : ''}`}>
