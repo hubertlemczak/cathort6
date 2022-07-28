@@ -15,11 +15,27 @@
     }
   }
 
+  &:nth-child(3n + 3) {
+    height: 650px;
+    justify-content: flex-end;
+  }
+
   &:nth-child(3n + 2) {
     height: 650px;
     max-width: 550px;
     img {
       height: 627px;
+    }
+  }
+
+  @media screen and(max-width: 740px) {
+    & {
+      width: 350px;
+      height: 420px !important;
+
+      img {
+        height: 394px !important;
+      }
     }
   }
 

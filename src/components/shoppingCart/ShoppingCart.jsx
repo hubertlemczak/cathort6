@@ -8,6 +8,7 @@ import { useShoppingCart } from '../../context/ShoppingCartContext';
 import { CartItem } from '../cartItem/CartItem';
 import { useWishList } from '../../context/WishListContext';
 import { WishListItem } from '../wishListItem/WishListItem';
+import { Empty } from '../empty/Empty';
 
 export const ShoppingCart = () => {
   const { fadeOut, setFadeOut, closeCart, cartItems, getCartSize } =
@@ -62,7 +63,7 @@ export const ShoppingCart = () => {
         {isWishListOpen ? (
           <div className="shopping-cart-contents">
             {getWishListSize() === 0 ? (
-              <h2>empty</h2>
+              <Empty value="wishlist" />
             ) : (
               <ul className="shopping-cart-items">
                 {wishListItems.map((item) => (
@@ -74,7 +75,7 @@ export const ShoppingCart = () => {
         ) : (
           <div className="shopping-cart-contents">
             {getCartSize() === 0 ? (
-              <h2>empty</h2>
+              <Empty value="shopping cart" />
             ) : (
               <>
                 <ul className="shopping-cart-items">
