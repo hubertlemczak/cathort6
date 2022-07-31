@@ -9,10 +9,10 @@ import { useWishList } from '../../context/WishListContext';
 
 export const WishListItem = ({ item: { id, quantity } }) => {
   const [remove, setRemove] = useState(null);
-  const { shopItems } = useShop();
+  const { findItemInStore } = useShop();
   const { increaseItemQuantity } = useShoppingCart();
   const { removeFromWishList } = useWishList();
-  const { name, imageUrl, price } = shopItems.find((i) => i.id === id);
+  const { name, imageUrl, price } = findItemInStore(id);
 
   return (
     <>

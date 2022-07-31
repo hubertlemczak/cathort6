@@ -12,8 +12,13 @@ export const WishListProvider = ({ children }) => {
   const closeWishList = () => setIsWishListOpen(false);
 
   const addToWishList = (id) => {
-    if (itemIsInWishList(id)) alert('Item already in Wish List :)');
-    else setWishListItems([...wishListItems, { id }]);
+    if (itemIsInWishList(id)) {
+      alert('Item already in Wish List :)');
+      return false;
+    } else {
+      setWishListItems([...wishListItems, { id }]);
+      return true;
+    }
   };
 
   const removeFromWishList = (id) =>

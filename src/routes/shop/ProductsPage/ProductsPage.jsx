@@ -9,12 +9,9 @@ const ProductsPage = () => {
   const { category } = useParams();
   return (
     <div className="products-container">
-      {shopItems.map(
-        (product) =>
-          product.category === category && (
-            <ProductCard key={product.id} product={product} />
-          )
-      )}
+      {shopItems[category]?.map(product => (
+        <ProductCard key={product.id} product={product} />
+      ))}
     </div>
   );
 };

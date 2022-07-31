@@ -1,19 +1,53 @@
-import { createContext, useContext, useState } from 'react';
-import SHOP_ITEMS from '../data/shop-data.json';
-import SHOP_CATEGORIES from '../data/shop-categories.json';
+import { createContext, useContext, useEffect, useState } from 'react';
+
+import {
+  addCollectionAndDocuments,
+  getCategoriesAndDocuments,
+  getCategoryKeysDocument,
+} from '../utils/firebase/firebase.utils';
 
 const ShopContext = createContext();
 
 export const useShop = () => useContext(ShopContext);
 
 export const ShopProvider = ({ children }) => {
-  const [shopItems] = useState(SHOP_ITEMS);
-  const [shopCategories] = useState(SHOP_CATEGORIES);
+  const [shopItems, setShopItems] = useState({});
+  const [shopCategories, setShopCategories] = useState([]);
+
+  // useEffect(() => {
+  //   addCollectionAndDocuments('categories', SHOP_CATEGORIES);
+  // }, []);
+
+  useEffect(() => {
+    async function getCategoriesMap() {
+      const categoryMap = await getCategoriesAndDocuments();
+      delete categoryMap.undefined;
+      setShopItems(categoryMap);
+    }
+    getCategoriesMap();
+  }, []);
+
+  useEffect(() => {
+    async function getCategoryKeys() {
+      const categories = await getCategoryKeysDocument();
+      setShopCategories(categories.categoryNames);
+    }
+    getCategoryKeys();
+  }, []);
+
+  const findItemInStore = id => {
+    let item;
+    for (let category in shopItems) {
+      if (!item) item = shopItems[category].find(i => i.id === id);
+    }
+    return item;
+  };
   return (
     <ShopContext.Provider
       value={{
         shopItems,
         shopCategories,
+        findItemInStore,
       }}
     >
       {children}

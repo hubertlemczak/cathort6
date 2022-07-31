@@ -9,10 +9,10 @@ import { useWishList } from '../../context/WishListContext';
 
 export const CartItem = ({ item: { id, quantity } }) => {
   const [remove, setRemove] = useState(false);
-  const { shopItems } = useShop();
+  const { findItemInStore } = useShop();
   const { removeItemFromCart } = useShoppingCart();
   const { addToWishList } = useWishList();
-  const { name, imageUrl, price } = shopItems.find((i) => i.id === id);
+  const { name, imageUrl, price } = findItemInStore(id);
 
   const removeState = {
     remove: { class: 'fade-in-remove', msg: 'ITEM REMOVED' },
@@ -49,8 +49,7 @@ export const CartItem = ({ item: { id, quantity } }) => {
             <HeartSVG
               className="item-love"
               onClick={() => {
-                setRemove('add');
-                addToWishList(id);
+                if (addToWishList(id)) setRemove('add');
               }}
             />
             <TrashSVG

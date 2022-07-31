@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const CategoryItem = ({ category }) => {
   const { title, imageUrl } = category;
   return (
-    <Link className="category-container" to={`/shop/${title}`}>
+    <Link className="category-container" to={title}>
       <div
         className="background-image"
         style={{ backgroundImage: `url(${imageUrl})` }}

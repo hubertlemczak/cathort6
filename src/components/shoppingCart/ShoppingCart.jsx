@@ -11,8 +11,14 @@ import { WishListItem } from '../wishListItem/WishListItem';
 import { Empty } from '../empty/Empty';
 
 export const ShoppingCart = () => {
-  const { fadeOut, setFadeOut, closeCart, cartItems, getCartSize } =
-    useShoppingCart();
+  const {
+    fadeOut,
+    setFadeOut,
+    closeCart,
+    cartItems,
+    getCartSize,
+    getCartTotal,
+  } = useShoppingCart();
   const {
     isWishListOpen,
     wishListItems,
@@ -24,7 +30,7 @@ export const ShoppingCart = () => {
   return (
     <div
       className={`shopping-cart ${fadeOut ? 'fade-out' : ''}`}
-      onAnimationEnd={(e) => {
+      onAnimationEnd={e => {
         if (e.animationName === 'fade-out') {
           closeCart();
           closeWishList();
@@ -66,7 +72,7 @@ export const ShoppingCart = () => {
               <Empty value="wishlist" />
             ) : (
               <ul className="shopping-cart-items">
-                {wishListItems.map((item) => (
+                {wishListItems.map(item => (
                   <WishListItem key={item.id} item={item} />
                 ))}
               </ul>
@@ -79,11 +85,14 @@ export const ShoppingCart = () => {
             ) : (
               <>
                 <ul className="shopping-cart-items">
-                  {cartItems.map((item) => (
+                  {cartItems.map(item => (
                     <CartItem key={item.id} item={item} />
                   ))}
                 </ul>
                 <div className="checkout-btn">
+                  <p className="cart-total">
+                    Total: £{getCartTotal().toFixed(2)}
+                  </p>
                   <Button buttonType={'black'}>CHECKOUT</Button>
                 </div>
               </>

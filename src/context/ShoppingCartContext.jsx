@@ -9,7 +9,7 @@ export const ShoppingCartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
-  const { shopItems } = useShop();
+  const { findItemInStore } = useShop();
 
   const openCart = () => setIsCartOpen(true);
   const closeCart = () => {
@@ -17,27 +17,26 @@ export const ShoppingCartProvider = ({ children }) => {
     setIsCartOpen(false);
   };
 
-  const findItemInCart = (id) => cartItems.find((item) => item.id === id);
+  const findItemInCart = id => cartItems.find(item => item.id === id);
 
-  const increaseItemQuantity = (id) => {
+  const increaseItemQuantity = id => {
     if (findItemInCart(id)) {
       setCartItems(
-        cartItems.map((item) =>
+        cartItems.map(item =>
           item.id === id ? { ...item, quantity: item.quantity + 1 } : item
         )
       );
     } else setCartItems([...cartItems, { id, quantity: 1 }]);
   };
 
-  const removeItemFromCart = (id) =>
-    setCartItems(cartItems.filter((item) => item.id !== id));
+  const removeItemFromCart = id =>
+    setCartItems(cartItems.filter(item => item.id !== id));
 
-  const getCartTotal = () => {
+  const getCartTotal = () =>
     cartItems.reduce((acc, cartItem) => {
-      const item = shopItems.find((i) => i.id === cartItem.id);
+      const item = findItemInStore(cartItem.id);
       return acc + item.price * cartItem.quantity;
     }, 0);
-  };
 
   const getCartSize = () =>
     cartItems.reduce((acc, item) => acc + item.quantity, 0);
