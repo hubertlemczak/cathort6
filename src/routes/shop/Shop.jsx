@@ -1,4 +1,4 @@
-import Categories from '../../components/categories/categories.component';
+import Categories from '../../components/Categories';
 import ProductsPage from './ProductsPage/ProductsPage';
 import { Routes, Route } from 'react-router-dom';
 
