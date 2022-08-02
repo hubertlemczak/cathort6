@@ -19,12 +19,12 @@ export const ShopProvider = ({ children }) => {
   // }, []);
 
   useEffect(() => {
-    async function getCategoriesMap() {
-      const categoryMap = await getCategoriesAndDocuments();
-      delete categoryMap.undefined;
-      setShopItems(categoryMap);
+    async function getShopItems() {
+      const items = await getCategoriesAndDocuments();
+      delete items.undefined;
+      setShopItems(items);
     }
-    getCategoriesMap();
+    getShopItems();
   }, []);
 
   useEffect(() => {

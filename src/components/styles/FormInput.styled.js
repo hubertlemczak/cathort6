@@ -1,10 +1,10 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const shrinkLabel = {
-  top: '-14px',
-  'font-size': '14px',
-  color: 'black',
-};
+const shrinkLabelStyles = css`
+  top: -14px;
+  font-size: 14px;
+  color: black;
+`;
 
 export const StyledFromInputLabel = styled.label`
   color: gray;
@@ -15,7 +15,7 @@ export const StyledFromInputLabel = styled.label`
   left: 5px;
   top: 10px;
   transition: 300ms ease all;
-  ${({ shrink }) => shrink && shrinkLabel}
+  ${({ shrink }) => shrink && shrinkLabelStyles}
 `;
 
 export const StyledFormInput = styled.input`
@@ -36,7 +36,7 @@ export const StyledFormInput = styled.input`
   }
 
   &:focus ~ ${StyledFromInputLabel} {
-    ${shrinkLabel}
+    ${shrinkLabelStyles}
   }
 `;
 

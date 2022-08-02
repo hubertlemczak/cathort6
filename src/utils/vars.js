@@ -18,48 +18,48 @@ export const theme = {
 export const BUTTON_TYPE_CLASSES = {
   base: {
     normal: {
-      ' background-color': theme.color.primary,
+      'background-color': theme.color.primary,
       color: 'white',
       border: 'none',
     },
     hover: {
-      ' background-color': theme.color.primaryHover,
+      'background-color': theme.color.primaryHover,
       color: 'white',
       border: 'none',
     },
   },
   google: {
     normal: {
-      ' background-color': theme.color.google,
+      'background-color': theme.color.google,
       color: 'white',
       border: 'none',
     },
     hover: {
-      ' background-color': theme.color.googleHover,
+      'background-color': theme.color.googleHover,
       color: 'white',
       border: 'none',
     },
   },
   inverted: {
     normal: {
-      ' background-color': 'white',
+      'background-color': 'white',
       color: 'black',
       border: '1px solid black',
     },
     hover: {
-      ' background-color': 'black',
+      'background-color': 'black',
       color: 'white',
       border: 'none',
     },
   },
   black: {
     normal: {
-      ' background-color': 'black',
+      'background-color': 'black',
       color: 'white',
       border: '1px solid white',
     },
     hover: {
-      ' background-color': 'white',
+      'background-color': 'white',
       color: 'black',
       border: '1px solid black',
     },

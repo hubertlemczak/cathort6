@@ -64,9 +64,7 @@ export const ShoppingCart = () => {
           </StyledShoppingCartCloseTab>
         </Flex>
         <StyledShoppingCartContents>
-          {(isWishListOpen ? getWishListSize() === 0 : getCartSize() === 0) ? (
-            <Empty value={isWishListOpen ? 'wishlist' : 'shopping cart'} />
-          ) : (
+          {(isWishListOpen ? getWishListSize() : getCartSize()) ? (
             <>
               <StyledShoppingCartItems>
                 {(isWishListOpen ? wishListItems : cartItems).map(item => (
@@ -80,6 +78,8 @@ export const ShoppingCart = () => {
                 </StyledShoppingCartCheckout>
               )}
             </>
+          ) : (
+            <Empty value={isWishListOpen ? 'wishlist' : 'shopping cart'} />
           )}
         </StyledShoppingCartContents>
       </StyledShoppingCartContainer>
