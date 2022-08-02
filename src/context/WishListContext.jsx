@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 const WishList = createContext();
 
@@ -11,7 +11,7 @@ export const WishListProvider = ({ children }) => {
   const openWishList = () => setIsWishListOpen(true);
   const closeWishList = () => setIsWishListOpen(false);
 
-  const addToWishList = (id) => {
+  const addToWishList = id => {
     if (itemIsInWishList(id)) {
       alert('Item already in Wish List :)');
       return false;
@@ -21,16 +21,13 @@ export const WishListProvider = ({ children }) => {
     }
   };
 
-  const removeFromWishList = (id) =>
-    setWishListItems(wishListItems.filter((item) => item.id !== id));
+  const removeFromWishList = id =>
+    setWishListItems(wishListItems.filter(item => item.id !== id));
 
   const getWishListSize = () => wishListItems.length;
 
-  const itemIsInWishList = (id) => wishListItems.find((item) => item.id === id);
+  const itemIsInWishList = id => wishListItems.find(item => item.id === id);
 
-  useEffect(() => {
-    console.log(wishListItems);
-  }, [wishListItems]);
   return (
     <WishList.Provider
       value={{

@@ -3,22 +3,25 @@ import { ReactComponent as HeartSVG } from '../assets/heart.svg';
 import { ReactComponent as ExitSVG } from '../assets/cross.svg';
 import Button from './Button.jsx';
 
-import './ShoppingCart.scss';
 import { useShoppingCart } from '../context/ShoppingCartContext';
 import { CartItem } from './CartItem';
 import { useWishList } from '../context/WishListContext';
-import { WishListItem } from './WishListItem';
 import { Empty } from './Empty';
+import {
+  StyledShoppingCart,
+  StyledShoppingCartBg,
+  StyledShoppingCartCheckout,
+  StyledShoppingCartCloseTab,
+  StyledShoppingCartContainer,
+  StyledShoppingCartContents,
+  StyledShoppingCartItems,
+  StyledShoppingCartTab,
+} from './styles/ShoppingCart.styled';
+import { Flex } from './styles/Globals.styled';
 
 export const ShoppingCart = () => {
-  const {
-    fadeOut,
-    setFadeOut,
-    closeCart,
-    cartItems,
-    getCartSize,
-    getCartTotal,
-  } = useShoppingCart();
+  const { fade, setFade, closeCart, cartItems, getCartSize, getCartTotal } =
+    useShoppingCart();
   const {
     isWishListOpen,
     wishListItems,
@@ -28,78 +31,58 @@ export const ShoppingCart = () => {
   } = useWishList();
 
   return (
-    <div
-      className={`shopping-cart ${fadeOut ? 'fade-out' : ''}`}
+    <StyledShoppingCart
+      fade={fade}
       onAnimationEnd={e => {
-        if (e.animationName === 'fade-out') {
+        if (fade) {
           closeCart();
           closeWishList();
         }
       }}
     >
-      <div className="shopping-cart-bg" onClick={() => setFadeOut(true)}></div>
-      <div className="shopping-cart-container">
-        <div className="shopping-cart-tabs">
-          <button
-            className={`shopping-cart-tab shopping-cart-tab1 ${
-              isWishListOpen ? '' : 'active'
-            }`}
+      <StyledShoppingCartBg
+        onClick={() => setFade(true)}
+      ></StyledShoppingCartBg>
+      <StyledShoppingCartContainer>
+        <Flex>
+          <StyledShoppingCartTab
+            isActive={!isWishListOpen}
             onClick={closeWishList}
           >
             <CartSVG style={{ width: 24, height: 24 }} />
             <span>SHOPPING CART [{getCartSize()}]</span>
-          </button>
-          <button
-            className={`shopping-cart-tab shopping-wishlist-tab ${
-              isWishListOpen ? 'active' : ''
-            }`}
+          </StyledShoppingCartTab>
+          <StyledShoppingCartTab
+            isActive={isWishListOpen}
             onClick={openWishList}
           >
             <HeartSVG style={{ width: 24, height: 24 }} />
             <span>WISHLIST [{getWishListSize()}]</span>
-          </button>
-          <button
-            className="shopping-cart-tab shopping-cart-close"
-            onClick={() => setFadeOut(true)}
-          >
+          </StyledShoppingCartTab>
+          <StyledShoppingCartCloseTab onClick={() => setFade(true)}>
             <ExitSVG style={{ width: 15, height: 15 }} />
-          </button>
-        </div>
-
-        {isWishListOpen ? (
-          <div className="shopping-cart-contents">
-            {getWishListSize() === 0 ? (
-              <Empty value="wishlist" />
-            ) : (
-              <ul className="shopping-cart-items">
-                {wishListItems.map(item => (
-                  <WishListItem key={item.id} item={item} />
+          </StyledShoppingCartCloseTab>
+        </Flex>
+        <StyledShoppingCartContents>
+          {(isWishListOpen ? getWishListSize() === 0 : getCartSize() === 0) ? (
+            <Empty value={isWishListOpen ? 'wishlist' : 'shopping cart'} />
+          ) : (
+            <>
+              <StyledShoppingCartItems>
+                {(isWishListOpen ? wishListItems : cartItems).map(item => (
+                  <CartItem key={item.id} item={item} />
                 ))}
-              </ul>
-            )}
-          </div>
-        ) : (
-          <div className="shopping-cart-contents">
-            {getCartSize() === 0 ? (
-              <Empty value="shopping cart" />
-            ) : (
-              <>
-                <ul className="shopping-cart-items">
-                  {cartItems.map(item => (
-                    <CartItem key={item.id} item={item} />
-                  ))}
-                </ul>
-                <div className="checkout-btn">
-                  <p className="cart-total">
-                    Total: £{getCartTotal().toFixed(2)}
-                  </p>
-                  <Button buttonType={'black'}>CHECKOUT</Button>
-                </div>
-              </>
-            )}
-          </div>
-        )}
-      </div>
-    </div>
+              </StyledShoppingCartItems>
+              {!isWishListOpen && (
+                <StyledShoppingCartCheckout>
+                  <p>Total: £{getCartTotal().toFixed(2)}</p>
+                  <Button buttonType="black">CHECKOUT</Button>
+                </StyledShoppingCartCheckout>
+              )}
+            </>
+          )}
+        </StyledShoppingCartContents>
+      </StyledShoppingCartContainer>
+    </StyledShoppingCart>
   );
 };

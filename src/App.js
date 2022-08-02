@@ -4,7 +4,7 @@ import Home from './routes/home/Home';
 import Navigation from './routes/navigation/Navigation';
 import Authentication from './routes/authentication/Authentication';
 import Shop from './routes/shop/Shop';
-import GlobalStyles, { AppContainer } from './components/styled/Globals.styled';
+import { GlobalStyles, AppContainer } from './components/styles/Globals.styled';
 
 const App = () => (
   <>

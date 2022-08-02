@@ -1,6 +1,7 @@
 export const removeState = {
-  remove: { action: 'fade-in-remove', msg: 'ITEM REMOVED' },
-  add: { action: 'fade-in-add', msg: 'ITEM ADDED TO WISHLIST' },
+  remove: { right: 35, msg: 'ITEM REMOVED' },
+  addToWishList: { right: 28, msg: 'ITEM ADDED TO WISHLIST' },
+  addToCart: { right: 32, msg: 'ITEM ADDED TO CART' },
 };
 
 export const theme = {

@@ -30,7 +30,7 @@ export const StyledProductContainer = styled.div`
     }
   }
 
-  @media screen and(max-width: 740px) {
+  @media (max-width: 740px) {
     & {
       width: 350px;
       height: 420px !important;

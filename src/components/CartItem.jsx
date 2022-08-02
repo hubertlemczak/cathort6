@@ -1,5 +1,6 @@
 import { ReactComponent as TrashSVG } from '../assets/trash.svg';
 import { ReactComponent as HeartSVG } from '../assets/heart.svg';
+import { ReactComponent as CartSVG } from '../assets/shopping-bag.svg';
 import { useShop } from '../context/ShopContext';
 import { useShoppingCart } from '../context/ShoppingCartContext';
 
@@ -19,17 +20,17 @@ import { removeState } from '../utils/vars';
 export const CartItem = ({ item: { id, quantity } }) => {
   const [remove, setRemove] = useState(false);
   const { findItemInStore } = useShop();
-  const { removeItemFromCart } = useShoppingCart();
-  const { addToWishList } = useWishList();
+  const { removeItemFromCart, increaseItemQuantity } = useShoppingCart();
+  const { addToWishList, isWishListOpen, removeFromWishList } = useWishList();
   const { name, imageUrl, price } = findItemInStore(id);
 
   return (
     <>
       {remove && (
         <StyledCartFadeOut
-          remove={removeState[remove].action}
+          right={removeState[remove].right}
           onAnimationEnd={() => {
-            removeItemFromCart(id);
+            isWishListOpen ? removeFromWishList(id) : removeItemFromCart(id);
             setRemove(null);
           }}
         >
@@ -44,19 +45,31 @@ export const CartItem = ({ item: { id, quantity } }) => {
           <div>
             <StyledItemPrice>£{price.toFixed(2)}</StyledItemPrice>
             <p>{name}</p>
-            <StyledItemDetails>
-              <p>BLUE</p>
-              <p>XL</p>
-              <p>Qty: {quantity}</p>
-            </StyledItemDetails>
+            {!isWishListOpen && (
+              <StyledItemDetails>
+                <p>BLUE</p>
+                <p>XL</p>
+                <p>Qty: {quantity}</p>
+              </StyledItemDetails>
+            )}
           </div>
           <StyledItemButtons>
-            <HeartSVG
-              className="item-love"
-              onClick={() => {
-                if (addToWishList(id)) setRemove('add');
-              }}
-            />
+            {isWishListOpen ? (
+              <CartSVG
+                className="item-cart"
+                onClick={() => {
+                  increaseItemQuantity(id);
+                  setRemove('addToCart');
+                }}
+              />
+            ) : (
+              <HeartSVG
+                className="item-love"
+                onClick={() => {
+                  if (addToWishList(id)) setRemove('addToWishList');
+                }}
+              />
+            )}
             <TrashSVG
               className="item-delete"
               onClick={() => setRemove('remove')}

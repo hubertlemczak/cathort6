@@ -1,22 +1,24 @@
-@keyframes fade-in {
+import { keyframes } from 'styled-components';
+
+export const fadeIn = keyframes` 
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
   }
-}
+`;
 
-@keyframes fade-out {
+export const fadeOut = keyframes` 
   from {
     opacity: 1;
   }
   to {
     opacity: 0;
   }
-}
+`;
 
-@keyframes fade-in-out {
+export const fadeInOut = keyframes` 
   from {
     opacity: 0;
   }
@@ -29,9 +31,9 @@
   to {
     opacity: 0;
   }
-}
+`;
 
-@keyframes slide-right-fade {
+export const slideRightFade = keyframes` 
   from {
     opacity: 1;
     transform: translateX(0%);
@@ -40,4 +42,4 @@
     opacity: 0;
     transform: translateX(-100%);
   }
-}
+`;

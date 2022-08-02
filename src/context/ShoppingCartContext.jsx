@@ -8,12 +8,12 @@ export const useShoppingCart = () => useContext(ShoppingCart);
 export const ShoppingCartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [fadeOut, setFadeOut] = useState(false);
+  const [fade, setFade] = useState(false);
   const { findItemInStore } = useShop();
 
   const openCart = () => setIsCartOpen(true);
   const closeCart = () => {
-    setFadeOut(false);
+    setFade(false);
     setIsCartOpen(false);
   };
 
@@ -51,8 +51,8 @@ export const ShoppingCartProvider = ({ children }) => {
         closeCart,
         increaseItemQuantity,
         removeItemFromCart,
-        fadeOut,
-        setFadeOut,
+        fade,
+        setFade,
         getCartSize,
         getCartTotal,
       }}

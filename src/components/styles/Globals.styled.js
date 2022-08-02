@@ -1,6 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
-const GlobalStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
   *,
   *::before,
   *::after {
@@ -66,4 +66,6 @@ export const AppContainer = styled.div`
   padding-inline: 10px;
 `;
 
-export default GlobalStyles;
+export const Flex = styled.div`
+  display: flex;
+`;

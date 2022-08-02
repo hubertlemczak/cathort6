@@ -1,20 +1,13 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+import { fadeInOut, slideRightFade } from './Animations.styled';
 
 export const StyledCartFadeOut = styled.span`
-  ${({ remove }) =>
-    remove === 'fade-in-remove'
-      ? `
-    position: absolute;
-    right: 38%;
-    opacity: 0;
-    transform: translateY(40px);
-    animation: fade-in-out 1200ms ease 200ms forwards;`
-      : `
-    position: absolute;
-    right: 33%;
-    opacity: 0;
-    transform: translateY(40px);
-    animation: fade-in-out 1200ms ease 200ms forwards;`}
+  position: absolute;
+  right: ${({ right }) => right}%;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: ${fadeInOut} 1200ms ease 200ms forwards;
 `;
 
 export const StyledCartItem = styled.div`
@@ -23,7 +16,10 @@ export const StyledCartItem = styled.div`
   gap: 20px;
   margin-bottom: 15px;
   animation: ${({ remove }) =>
-    remove && 'slide-right-fade 700ms cubic-bezier(0.9, 0.31, 0, 1) forwards'};
+    remove &&
+    css`
+      ${slideRightFade} 700ms cubic-bezier(0.9, 0.31, 0, 1) forwards
+    `};
 `;
 
 export const StyledImage = styled.img`
