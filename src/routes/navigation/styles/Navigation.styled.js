@@ -9,7 +9,7 @@ export const StyledNav = styled.nav`
   padding: 15px 10px;
   top: 0;
   z-index: 3;
-  background-color: rgba(255, 255, 255, 0.783);
+  background-color: ${({ theme }) => theme.bgclr.primary};
 
   & > a {
     width: 90px;

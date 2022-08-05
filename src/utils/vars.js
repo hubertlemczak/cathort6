@@ -6,12 +6,15 @@ export const removeState = {
 
 export const theme = {
   color: {
-    primary: '#ff7f7f',
+    primary: 'red',
     primaryHover: '#ee6666',
     google: '#80adf5',
     googleHover: '#699ae9',
     gray: '#808080',
     black: '#000000',
+  },
+  bgclr: {
+    primary: 'white',
   },
 };
 
