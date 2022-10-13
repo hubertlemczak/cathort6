@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const StyledNav = styled.nav`
   height: 100px;
-  width: 100%;
+  max-width: 105rem;
+  margin-inline: auto;
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;

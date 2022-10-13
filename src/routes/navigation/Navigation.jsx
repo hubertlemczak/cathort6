@@ -16,13 +16,10 @@ const Navigation = () => {
   return (
     <Fragment>
       <StyledNav>
-        <Link to="/">
+        <Link to="/shop">
           <Cathort6 />
         </Link>
         <StyledNavLinks>
-          <li>
-            <Link to="/">HOME</Link>
-          </li>
           <li>
             <Link to="/shop">SHOP</Link>
           </li>
