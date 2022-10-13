@@ -6,8 +6,8 @@ export const removeState = {
 
 export const theme = {
   color: {
-    primary: 'red',
-    primaryHover: '#ee6666',
+    primary: '#ee6666',
+    primaryHover: '#e84f4f',
     google: '#80adf5',
     googleHover: '#699ae9',
     gray: '#808080',

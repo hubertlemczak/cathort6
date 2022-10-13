@@ -18,6 +18,7 @@ import {
   StyledShoppingCartTab,
 } from './styles/ShoppingCart.styled';
 import { Flex } from './styles/Globals.styled';
+import { useNavigate } from 'react-router-dom';
 
 export const ShoppingCart = () => {
   const { fade, setFade, closeCart, cartItems, getCartSize, getCartTotal } =
@@ -29,6 +30,8 @@ export const ShoppingCart = () => {
     closeWishList,
     getWishListSize,
   } = useWishList();
+
+  const navigate = useNavigate();
 
   return (
     <StyledShoppingCart
@@ -74,7 +77,15 @@ export const ShoppingCart = () => {
               {!isWishListOpen && (
                 <StyledShoppingCartCheckout>
                   <p>Total: £{getCartTotal().toFixed(2)}</p>
-                  <Button buttonType="black">CHECKOUT</Button>
+                  <Button
+                    buttonType="black"
+                    onClick={() => {
+                      closeCart();
+                      navigate('/checkout');
+                    }}
+                  >
+                    CHECKOUT
+                  </Button>
                 </StyledShoppingCartCheckout>
               )}
             </>
