@@ -1,7 +1,7 @@
 import Button from '../../../components/Button';
 import { PaymentElement } from '@stripe/react-stripe-js';
 
-const PaymentForm = ({ stripe }) => {
+const PaymentForm = () => {
   return (
     <form>
       <PaymentElement />
